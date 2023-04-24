@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <title>LI-SU UNICODE CONVERTER</title>
-  <meta name="description" content="Lisu font convert non unicode to unicode.">
+  <meta name="description" content="Lisu font converter non unicode to unicode.">
   <meta name="keywords" content="LISU, Unicode, Converter, Larmaysee">
   <meta name="author" content="Lar May See">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,18 +19,7 @@
   <link rel="shortcut icon" href="logo.png" type="image/png">
 
   <style>
-    @media screen and (min-width: 767px) {
-      .container {
-        max-width: 767px;
-      }
-    }
-
     #unicode {
-      width: 100%;
-      min-height: 100px;
-      border: 1px solid #e5e5e5;
-      border-radius: 8px;
-      padding: 10px;
       font-family: 'unicode';
     }
 
@@ -38,53 +27,38 @@
 </head>
 
 <body>
-  <div class="container">
-    <div class="row mt-2">
-      <div class="col-sm-12 ">
-        <h1>Lisu Unicode Converter</h1>
-        <nav class="nav">
-          <li class="nav-item"><a href="https://fonts.google.com/noto/specimen/Noto+Sans+Lisu"
-              target="_blank" class="nav-link">Get fonts</a></li>
-          <li>
-            <select name="" id="fromFont" class="form-control form-control-sm">
-              <option value="bya">Byaly Lisu</option>
-              <option value="lisu_FM">Lisu FM</option>
-            </select>
-          </li>
-        </nav>
+  <nav class="navbar navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#">
+        <img src="logo.png" alt="" height="50">
+        Font Converter
+      </a>
+
+      <div class="d-flex">
+        <a target="_blank" href="https://fonts.google.com/noto/specimen/Noto+Sans+Lisu"
+          class="btn btn-primary" type="button">Download Font</a>
       </div>
     </div>
-
+  </nav>
+  <div class="container">
     <div class="row">
-      <div class="col-sm-12">
-        <div class="form-group mb-2">
-          <textarea class="form-control" name="inputText" id="nonUnicode" rows="5"
+      <div class="col-sm-12 col-md-6 mt-2">
+        <div class="form-group">
+          <label class=" mb-2" for="nonUnicode">Non Unicode Font</label>
+          <textarea class="form-control" cols="30" rows="10" name="inputText" id="nonUnicode"
             placeholder="Vw ny li-su P Ti ro V lo..."></textarea>
         </div>
-        <div class="form-group">
-          <button class="btn btn-sm  btn-secondary" id="reset">Reset</button>
-          <button class="btn  btn-sm btn-primary" id="convert">Convert</button>
-        </div>
       </div>
-    </div>
 
-    <div class="row mt-2">
-      <div class="col-sm-12">
-        <div class="d-flex justify-content-between">
-          <h1>Result: </h1>
-          <div class="btn btn-group align-items-center">
-            <button id="copy-btn" class="btn btn-sm btn-primary">Copy</button>
-          </div>
-        </div>
-
+      <div class="col-sm-12 col-md-6 mt-2">
         <div class="form-group">
-          <textarea name="" id="unicode" cols="30" rows="10" readonly></textarea>
+          <label for="unicode" class="mb-2">Unicode Font</label>
+          <textarea name="" id="unicode" cols="30" rows="10" class="form-control"
+            placeholder="ꓥꓪ ꓠꓬ ꓡꓲ-ꓢꓴ ꓒ ꓕꓲ ꓣꓳ ꓥ ꓡꓳꓸꓸꓸ"></textarea>
         </div>
       </div>
     </div>
   </div>
-
-
 
 
   <script src="jquery.min.js"></script>

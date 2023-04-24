@@ -21,6 +21,17 @@
 	font-style: normal;
 }
 
+@font-face {
+    font-family: 'LisuTzimu';
+    src: url('LisuTzimu-Regular.woff2') format('woff2'),
+        url('LisuTzimu-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+
 .pane p {
 	font-family: 'bya' !important;
 }

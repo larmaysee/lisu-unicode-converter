@@ -1,5 +1,5 @@
 'use strict';
-var byatoNgwa = function (output) {
+var toUnicode = function (output) {
 	var rules = [
 		{
 			from: 'a',
@@ -238,6 +238,245 @@ var byatoNgwa = function (output) {
 	return replace_with_rule(rules, output);
 };
 
+var toNonUnicode = function (output) {
+	var rules = [
+		{
+			to: 'a',
+			from: 'ꓮ',
+		},
+		{
+			to: 'A',
+			from: 'ꓯ',
+		},
+		{
+			to: 'b',
+			from: 'ꓐ',
+		},
+		{
+			to: 'B',
+			from: 'ꓭ',
+		},
+		{
+			to: 'c',
+			from: 'ꓚ',
+		},
+		{
+			to: 'C',
+			from: 'ꓛ',
+		},
+		{
+			to: 'd',
+			from: 'ꓓ',
+		},
+		{
+			to: 'D',
+			from: 'ꓷ',
+		},
+		{
+			to: 'e',
+			from: 'ꓰ',
+		},
+		{
+			to: 'E',
+			from: 'ꓱ',
+		},
+		{
+			to: 'f',
+			from: 'ꓝ',
+		},
+		{
+			to: 'F',
+			from: 'ꓞ',
+		},
+		{
+			to: 'g',
+			from: 'ꓖ',
+		},
+		{
+			to: 'G',
+			from: 'ꓨ',
+		},
+		{
+			to: 'h',
+			from: 'ꓧ',
+		},
+		{
+			to: 'i',
+			from: 'ꓲ',
+		},
+		{
+			to: 'I',
+			from: '꓾',
+		},
+		{
+			to: 'j',
+			from: 'ꓙ',
+		},
+		{
+			to: 'J',
+			from: 'ꓩ',
+		},
+		{
+			to: 'k',
+			from: 'ꓗ',
+		},
+		{
+			to: 'K',
+			from: 'ꓘ',
+		},
+		{
+			to: 'l',
+			from: 'ꓡ',
+		},
+		{
+			to: 'L',
+			from: 'ꓶ',
+		},
+		{
+			to: 'm',
+			from: 'ꓟ',
+		},
+		{
+			to: 'n',
+			from: 'ꓠ',
+		},
+		{
+			to: 'o',
+			from: 'ꓳ',
+		},
+		{
+			to: 'O',
+			from: 'ˍ',
+		},
+		{
+			to: 'p',
+			from: 'ꓑ',
+		},
+		{
+			to: 'P',
+			from: 'ꓒ',
+		},
+		{
+			to: 'r',
+			from: 'ꓣ',
+		},
+		{
+			to: 'R',
+			from: 'ꓤ',
+		},
+		{
+			to: 's',
+			from: 'ꓢ',
+		},
+		{
+			to: 't',
+			from: 'ꓔ',
+		},
+		{
+			to: 'T',
+			from: 'ꓕ',
+		},
+		{
+			to: 'u',
+			from: 'ꓴ',
+		},
+		{
+			to: 'U',
+			from: 'ꓵ',
+		},
+		{
+			to: 'v',
+			from: 'ꓦ',
+		},
+		{
+			to: 'V',
+			from: 'ꓥ',
+		},
+		{
+			to: 'w',
+			from: 'ꓪ',
+		},
+		{
+			to: 'x',
+			from: 'ꓫ',
+		},
+		{
+			to: 'y',
+			from: 'ꓬ',
+		},
+		{
+			to: 'z',
+			from: 'ꓜ',
+		},
+		{
+			to: '\\[',
+			from: 'ʼ',
+		},
+		{
+			to: ',',
+			from: 'ꓹ',
+		},
+		{
+			to: 'H',
+			from: 'ꓺ',
+		},
+		{
+			to: 'Y',
+			from: 'ꓻ',
+		},
+		{
+			to: ';',
+			from: 'ꓼ',
+		},
+		{
+			to: ':',
+			from: 'ꓽ',
+		},
+		{
+			to: '=',
+			from: '꓿',
+		},
+		{
+			to: ' ',
+			from: ' ',
+		},
+		{
+			to: 'Q',
+			from: 'ꓺꓽ',
+		},
+		{
+			to: 'S',
+			from: 'ꓸꓼ',
+		},
+		{
+			to: 'W',
+			from: 'ꓹꓼ',
+		},
+		{
+			to: 'q',
+			from: 'ꓻꓽ',
+		},
+		{
+			to: '`',
+			from: 'ꓺꓼ',
+		},
+		{
+			to: 'Z',
+			from: '“',
+		},
+		{
+			to: 'X',
+			from: '”',
+		},
+		{
+			to: '\\.',
+			from: 'ꓸ',
+		},
+	];
+
+	return replace_with_rule(rules, output);
+};
+
 function replace_with_rule(rule, output) {
 	var max_loop = rule.length;
 	for (var i = 0; i < max_loop; i++) {
@@ -261,21 +500,16 @@ jQuery(document).ready(function ($) {
 		$('#nonUnicode').css('font-family', font);
 	});
 
-	$('#convert').on('click', function () {
-		var inputText = $('#nonUnicode').val();
-		var unicodeText = byatoNgwa(inputText);
+
+	$('#nonUnicode').on('input', function () {
+		let unicodeText = toUnicode(this.value);
 		$('#unicode').val(unicodeText);
 	});
 
-	$('#reset').on('click', function () {
-		$('#nonUnicode').val('');
-		$('#unicode').val('');
-	});
 
-	// copy btn
-	$('#copy-btn').on('click', function () {
-		// Select the text field
-		var copyText = $('#unicode').val();
-		navigator.clipboard.writeText(copyText);
+	$('#unicode').on('input', function () {
+		let unicode = this.value;
+		let nonUnicode = toNonUnicode(unicode);
+		$('#nonUnicode').val(nonUnicode);
 	});
 });
